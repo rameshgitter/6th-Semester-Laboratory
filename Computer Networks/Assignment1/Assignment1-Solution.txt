@@ -1,0 +1,442 @@
+😊
+Computer Network Lab (CS 3272)
+Assignment 1: Networking basic commands 
+Made By:- Ramesh Chandra Soren               Enrollment No:- 2022CSB086
+
+------------------------------------------------------------------------------------------------------------------------
+
+1. Read the man pages of ifconfig, ping, traceroute, arp, dig, nslookup, and netstat and write their utilities in brief.
+
+Here’s a concise summary of the utilities for the specified commands after reviewing their man pages:
+1. ifconfig
+    # Used to configure or display network interfaces.
+    # Assign IP addresses, netmask, and broadcast addresses to interfaces.
+    # Enable or disable network interfaces.
+    # View network interface statistics and configurations.
+
+2. ping
+    # Tests the reachability of a host on a network using ICMP echo requests.
+    # Measures round-trip time for packets to travel to the host and back.
+    # Helps diagnose network connectivity issues.
+
+3. traceroute
+    # Traces the route packets take to reach a destination host.
+    # Displays each intermediate hop and the time taken to reach it.
+    # Useful for identifying network bottlenecks or routing issues.
+
+4. arp
+    # Displays and manipulates the system's Address Resolution Protocol (ARP) cache.
+    # Shows the mapping of IP addresses to MAC addresses on the local network.
+    # Can be used to add, delete, or modify ARP entries.
+
+5. dig
+    # A DNS lookup utility used for querying DNS servers.
+    # Retrieves information such as IP addresses, MX records, and name server records.
+    # Often used for troubleshooting DNS issues and verifying DNS configurations.
+
+6. nslookup
+    # Queries DNS to find the mapping of domain names to IP addresses and vice versa.
+    # Useful for checking the resolution of a hostname and testing DNS servers.
+
+7. netstat
+    # Displays network connections, routing tables, interface statistics, and socket information.
+    # Monitors incoming and outgoing network traffic.
+    # Useful for diagnosing network performance and identifying open ports or connections.
+
+---------------------------------------------------------------------------------------------------
+
+2. Find the IP and hardware addresses of your machine using ifconfig command.
+
+#####################################################################################
+
+ramesh@ramesh-Victus-by-HP-Gaming-Laptop-15-fa0xxx:~$ ifconfig
+docker0: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
+        inet 172.17.0.1  netmask 255.255.0.0  broadcast 172.17.255.255
+        ether 02:42:6a:4e:6a:03  txqueuelen 0  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+eno1: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
+        ether 5c:60:ba:64:6b:29  txqueuelen 1000  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 1517  bytes 127908 (127.9 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 1517  bytes 127908 (127.9 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+wlp0s20f3: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.55.54  netmask 255.255.255.0  broadcast 192.168.55.255
+        inet6 2401:4900:74e1:221c:e73c:1520:ea02:9554  prefixlen 64  scopeid 0x0<global>
+        inet6 fe80::1c02:13fb:63ce:19  prefixlen 64  scopeid 0x20<link>
+        inet6 2401:4900:74e1:221c:6b19:e72e:4304:a47b  prefixlen 64  scopeid 0x0<global>
+        ether 54:6c:eb:b8:0a:c9  txqueuelen 1000  (Ethernet)
+        RX packets 3356  bytes 2332913 (2.3 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 2422  bytes 1017515 (1.0 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+###############################################################################################
+
+The following Active Network Interfaces are present in my system:
+
+    docker0: A virtual bridge created by Docker.
+        IP Address: 172.17.0.1
+        MAC Address: 02:42:6a:4e:6a:03
+
+    eno1: Your Ethernet interface (currently no IP assigned).
+        MAC Address: 5c:60:ba:64:6b:29
+
+    lo: The loopback interface (used for local communication within the machine).
+        IP Address: 127.0.0.1 (localhost, standard for loopback)
+
+    wlp0s20f3: Your Wi-Fi interface (currently active).
+        IP Address: 192.168.55.54 (IPv4)
+        Broadcast Address: 192.168.55.255
+        IPv6 Address: Multiple IPv6 addresses listed.
+        MAC Address: 54:6c:eb:b8:0a:c9
+
+Summary of Key Information
+
+    Active Network (Wi-Fi):
+        IPv4 Address: 192.168.55.54
+        MAC Address: 54:6c:eb:b8:0a:c9
+
+    Other Notes:
+        Your Ethernet (eno1) is not currently assigned an IP address.
+        docker0 is for Docker-related virtual networking.
+
+-----------------------------------------------------------------------
+
+3. Use “ping <AnyURL>” command and find out
+i.      the average RTT(round trip time).
+ii.     the %packet loss.
+iii.    size of packet that is sent to <AnyURL> server.
+iv.     size of packet that is received by your machine.
+
+######################################################################################################
+
+ramesh@ramesh-Victus-by-HP-Gaming-Laptop-15-fa0xxx:~$ ping google.com
+PING google.com(bom07s11-in-x0e.1e100.net (2404:6800:4009:803::200e)) 56 data bytes
+64 bytes from bom07s11-in-x0e.1e100.net (2404:6800:4009:803::200e): icmp_seq=1 ttl=117 time=96.4 ms
+64 bytes from pnbomb-ab-in-x0e.1e100.net (2404:6800:4009:803::200e): icmp_seq=2 ttl=117 time=97.4 ms
+64 bytes from pnbomb-ab-in-x0e.1e100.net (2404:6800:4009:803::200e): icmp_seq=3 ttl=117 time=96.1 ms
+64 bytes from pnbomb-ab-in-x0e.1e100.net (2404:6800:4009:803::200e): icmp_seq=4 ttl=117 time=124 ms
+64 bytes from bom07s11-in-x0e.1e100.net (2404:6800:4009:803::200e): icmp_seq=5 ttl=117 time=181 ms
+64 bytes from bom07s11-in-x0e.1e100.net (2404:6800:4009:803::200e): icmp_seq=6 ttl=117 time=114 ms
+64 bytes from pnbomb-ab-in-x0e.1e100.net (2404:6800:4009:803::200e): icmp_seq=7 ttl=117 time=130 ms
+64 bytes from pnbomb-ab-in-x0e.1e100.net (2404:6800:4009:803::200e): icmp_seq=8 ttl=117 time=98.8 ms
+^C
+--- google.com ping statistics ---
+8 packets transmitted, 8 received, 0% packet loss, time 7011ms
+rtt min/avg/max/mdev = 96.097/117.124/180.507/27.002 ms
+
+#######################################################################################################
+1. Average RTT (Round Trip Time): 117.124 ms
+    # From the last line: rtt min/avg/max/mdev = 96.097/117.124/180.507/27.002 ms
+
+2. % Packet Loss: 0%
+    # From the statistics: 8 packets transmitted, 8 received, 0% packet loss
+
+3. Size of Packet Sent: 56 bytes 
+    # From the initial PING line: PING google.com (2404:6800:4009:803::200e) 56 data bytes
+
+4. Size of Packet Received: 64 bytes (56 bytes of data + 8 bytes of ICMP header)
+    # From the response lines: 64 bytes from ...
+
+--------------------------------------------------------------------------------------------
+
+4. Use “dig <AnyURL>” command and find out
+i. The IP address of <AnyURL>.
+
+#########################################################################
+
+ramesh@ramesh-Victus-by-HP-Gaming-Laptop-15-fa0xxx:~$ dig google.com
+
+; <<>> DiG 9.18.18-0ubuntu0.22.04.1-Ubuntu <<>> google.com
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 53516
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 65494
+;; QUESTION SECTION:
+;google.com.			IN	A
+
+;; ANSWER SECTION:
+google.com.		126	IN	A	142.250.183.46
+
+;; Query time: 71 msec
+;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)
+;; WHEN: Fri Jan 03 14:02:13 IST 2025
+;; MSG SIZE  rcvd: 55
+
+#########################################################################
+
+i. The IP Address of google.com: 142.250.183.46
+    # From the ANSWER SECTION: google.com.		126	IN	A	142.250.183.46
+
+ii. The IP Addresses of Local DNS Servers: 127.0.0.53
+    # From the SERVER line: SERVER: 127.0.0.53#53(127.0.0.53) (UDP)
+
+
+This indicates that your system is using a local resolver (likely a caching DNS resolver provided by your operating system, e.g., systemd-resolved).
+------------                ----------------------      -----------------------                 ------------------------
+
+ii. The IP addresses of local DNS servers of IIEST.
+
+#############################################################################
+
+ramesh@ramesh-Victus-by-HP-Gaming-Laptop-15-fa0xxx:~$ dig cs.iiests.ac.in
+
+; <<>> DiG 9.18.18-0ubuntu0.22.04.1-Ubuntu <<>> cs.iiests.ac.in
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 5691
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 2, ADDITIONAL: 3
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 65494
+;; QUESTION SECTION:
+;cs.iiests.ac.in.		IN	A
+
+;; ANSWER SECTION:
+cs.iiests.ac.in.	3600	IN	A	14.139.223.166
+
+;; AUTHORITY SECTION:
+iiests.ac.in.		3600	IN	NS	manas.iiests.ac.in.
+iiests.ac.in.		3600	IN	NS	amit.iiests.ac.in.
+
+;; ADDITIONAL SECTION:
+amit.iiests.ac.in.	3600	IN	A	14.139.223.163
+manas.iiests.ac.in.	3600	IN	A	14.139.223.162
+
+;; Query time: 156 msec
+;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)
+;; WHEN: Fri Jan 03 15:38:47 IST 2025
+;; MSG SIZE  rcvd: 131
+
+#############################################################################
+
+i. The IP Address of cs.iiests.ac.in: 14.139.223.166
+
+ii. The IP Addresses of Local IIESTS DNS Servers: 127.0.0.53
+
+----------------------------------------------------------------
+
+5. Use “traceroute <AnyURL>” and find out
+i. number of hops in between your machine and <AnyURL> server.
+ii. the IP address of your network gateway of your subnet.
+
+##########################################################################################################
+# Note: for linux we need to install traceroute
+ramesh@ramesh-Victus-by-HP-Gaming-Laptop-15-fa0xxx:~$ sudo apt install traceroute
+
+
+ramesh@ramesh-Victus-by-HP-Gaming-Laptop-15-fa0xxx:~$ traceroute google.com
+traceroute to google.com (142.250.195.110), 30 hops max, 60 byte packets
+ 1  _gateway (192.168.55.204)  4.704 ms  5.055 ms  5.618 ms
+ 2  * * *
+ 3  192.168.162.65 (192.168.162.65)  40.165 ms  41.615 ms  41.798 ms
+ 4  aes-static-022.175.22.125.airtel.in (125.22.175.22)  42.030 ms aes-static-026.175.22.125.airtel.in (125.22.175.26)  39.629 ms aes-static-022.175.22.125.airtel.in (125.22.175.22)  40.586 ms
+ 5  aes-static-025.175.22.125.airtel.in (125.22.175.25)  41.072 ms aes-static-021.175.22.125.airtel.in (125.22.175.21)  48.580 ms aes-static-025.175.22.125.airtel.in (125.22.175.25)  48.739 ms
+ 6  116.119.158.147 (116.119.158.147)  150.929 ms * 182.79.142.216 (182.79.142.216)  83.102 ms
+ 7  * * *
+ 8  * * *
+ 9  142.250.233.142 (142.250.233.142)  83.013 ms 142.251.49.218 (142.251.49.218)  83.223 ms 142.251.55.74 (142.251.55.74)  83.540 ms
+10  142.251.55.69 (142.251.55.69)  83.728 ms  99.809 ms 142.251.55.71 (142.251.55.71)  99.736 ms
+11  maa03s39-in-f14.1e100.net (142.250.195.110)  99.948 ms  99.920 ms  99.520 ms
+
+############################################################################################################
+
+i. Number of Hops Between Your Machine and google.com: 11
+
+    Count the number of lines before the final destination:
+        The destination is maa03s39-in-f14.1e100.net (142.250.195.110), which is reached in 11 hops.
+
+ii. IP Address of Your Network Gateway: 192.168.55.204
+
+    The gateway is typically the first hop:
+
+    1  _gateway (192.168.55.204)  4.704 ms  5.055 ms  5.618 ms
+
+-------------------------------------------------------------------------------------------------------------
+
+6. Use “arp” command to find out the MAC address of the device that is performing as your network gateway.
+
+#########################################################################################
+ramesh@ramesh-Victus-by-HP-Gaming-Laptop-15-fa0xxx:~$ arp -n
+Address                  HWtype  HWaddress           Flags Mask            Iface
+192.168.55.204           ether   6e:72:99:c3:49:f4   C                     wlp0s20f3
+#########################################################################################
+
+Details
+#  Network Gateway IP Address: 192.168.55.204
+-> MAC Address of the Gateway: 6e:72:99:c3:49:f4
+#  Interface Used: wlp0s20f3 (your Wi-Fi interface)
+
+------------------------------------------------------------------------------------------------------------------------
+
+7. Use nslookup <AnyURL> command and find out the IP address of <AnyURL>. 
+
+##############################################################################
+ramesh@ramesh-Victus-by-HP-Gaming-Laptop-15-fa0xxx:~$ nslookup google.com
+Server:		127.0.0.53
+Address:	127.0.0.53#53
+
+Non-authoritative answer:
+Name:	google.com
+Address: 142.250.195.110
+Name:	google.com
+Address: 2404:6800:4009:822::200e
+
+ramesh@ramesh-Victus-by-HP-Gaming-Laptop-15-fa0xxx:~$ nslookup 142.250.190.78
+78.190.250.142.in-addr.arpa	name = ord37s34-in-f14.1e100.net.
+
+Authoritative answers can be found from:
+
+################################################################################
+
+The results show that:
+1. google.com resolves to IP address 142.250.190.78 (IPv4) and 2404:6800:4009:828::200e (IPv6)
+2. The reverse lookup of 142.250.190.78 points to ord37s34-in-f14.1e100.net, which is one of Google's servers
+
+-----------------------------------------------------------------------------------------------------------------------
+8. Use netstat command and find out the active connections of your pc/laptop.
+
+#############################################################################################
+
+ramesh@ramesh-Victus-by-HP-Gaming-Laptop-15-fa0xxx:~$ netstat
+Active Internet connections (w/o servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State      
+tcp        0      1 ramesh-Victus-by-:48278 ec2-52-35-150-14.:https SYN_SENT   
+tcp        0      0 ramesh-Victus-by-:40772 93.243.107.34.bc.:https ESTABLISHED
+tcp        0      1 ramesh-Victus-by-:48266 ec2-52-35-150-14.:https SYN_SENT   
+tcp6       0      0 ramesh-Victus-by-:57304 2803:f800:53::4:https   ESTABLISHED
+tcp6       0      0 ramesh-Victus-by-:45444 del11s21-in-x0a.1:https ESTABLISHED
+tcp6       0      0 ramesh-Victus-by-:52020 del12s02-in-x03.1:https ESTABLISHED
+tcp6       0      0 ramesh-Victus-by-:38922 sf-in-f84.1e100.n:https ESTABLISHED
+tcp6       0      0 ramesh-Victus-by-:46200 whatsapp-cdn6-shv:https ESTABLISHED
+udp        0      0 ramesh-Victus-by:bootpc _gateway:bootps         ESTABLISHED
+Active UNIX domain sockets (w/o servers)
+Proto RefCnt Flags       Type       State         I-Node   Path
+unix  5      [ ]         DGRAM      CONNECTED     22280    /run/systemd/notify
+unix  2      [ ]         DGRAM                    22297    /run/systemd/journal/syslog
+unix  19     [ ]         DGRAM      CONNECTED     22308    /run/systemd/journal/dev-log
+unix  8      [ ]         DGRAM      CONNECTED     22310    /run/systemd/journal/socket
+unix  2      [ ]         DGRAM                    43196    /run/user/1000/systemd/notify
+unix  2      [ ]         DGRAM                    26397    /run/wpa_supplicant/wlp0s20f3
+unix  2      [ ]         DGRAM                    32118    /run/wpa_supplicant/p2p-dev-wlp0s20
+unix  3      [ ]         STREAM     CONNECTED     48837    @/tmp/.ICE-unix/2236
+unix  3      [ ]         STREAM     CONNECTED     32121    /run/user/1000/bus
+unix  3      [ ]         STREAM     CONNECTED     27115    /run/user/1000/at-spi/bus_0
+unix  3      [ ]         STREAM     CONNECTED     23198    /run/user/1000/bus
+unix  3      [ ]         STREAM     CONNECTED     15048    
+
+
+
+ramesh@ramesh-Victus-by-HP-Gaming-Laptop-15-fa0xxx:~$ netstat -tuln
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State      
+tcp        0      0 127.0.0.1:33060         0.0.0.0:*               LISTEN     
+tcp        0      0 127.0.0.1:631           0.0.0.0:*               LISTEN     
+tcp        0      0 127.0.0.53:53           0.0.0.0:*               LISTEN     
+tcp        0      0 127.0.0.1:3306          0.0.0.0:*               LISTEN     
+tcp        0      0 127.0.0.1:11434         0.0.0.0:*               LISTEN     
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN     
+tcp        0      0 127.0.0.1:39119         0.0.0.0:*               LISTEN     
+tcp6       0      0 :::22                   :::*                    LISTEN     
+tcp6       0      0 ::1:631                 :::*                    LISTEN     
+tcp6       0      0 :::1716                 :::*                    LISTEN     
+udp        0      0 127.0.0.53:53           0.0.0.0:*                          
+udp        0      0 0.0.0.0:631             0.0.0.0:*                          
+udp        0      0 0.0.0.0:5353            0.0.0.0:*                          
+udp        0      0 0.0.0.0:56150           0.0.0.0:*                          
+udp6       0      0 :::41490                :::*                               
+udp6       0      0 :::1716                 :::*                               
+udp6       0      0 :::5353                 :::*     
+                      
+    
+ramesh@ramesh-Victus-by-HP-Gaming-Laptop-15-fa0xxx:~$ netstat -tulna
+Active Internet connections (servers and established)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State      
+tcp        0      0 127.0.0.1:33060         0.0.0.0:*               LISTEN     
+tcp        0      0 127.0.0.1:631           0.0.0.0:*               LISTEN     
+tcp        0      0 127.0.0.53:53           0.0.0.0:*               LISTEN     
+tcp        0      0 127.0.0.1:3306          0.0.0.0:*               LISTEN     
+tcp        0      0 127.0.0.1:11434         0.0.0.0:*               LISTEN     
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN     
+tcp        0      0 127.0.0.1:39119         0.0.0.0:*               LISTEN     
+tcp        0      0 192.168.55.54:41188     172.64.41.4:443         ESTABLISHED
+tcp        0      0 192.168.55.54:42092     34.107.243.93:443       ESTABLISHED
+tcp6       0      0 :::22                   :::*                    LISTEN     
+tcp6       0      0 ::1:631                 :::*                    LISTEN     
+tcp6       0      0 :::1716                 :::*                    LISTEN     
+tcp6       0      0 2401:4900:74e1:22:52148 2606:4700:8392:7cbc:443 ESTABLISHED
+udp        0      0 127.0.0.53:53           0.0.0.0:*                          
+udp        0      0 192.168.55.54:68        192.168.55.204:67       ESTABLISHED
+udp        0      0 0.0.0.0:631             0.0.0.0:*                          
+udp        0      0 0.0.0.0:5353            0.0.0.0:*                          
+udp        0      0 0.0.0.0:56150           0.0.0.0:*                          
+udp6       0      0 :::41490                :::*                               
+udp6       0      0 :::1716                 :::*                               
+udp6       0      0 :::5353                 :::*     
+          
+################################################################################################
+
+These are the ports that are open on your machine and waiting for incoming connections:
+
+    TCP Ports:
+        127.0.0.1:33060 (likely MySQL or a local database service)
+        127.0.0.1:631 (CUPS - printing service)
+        127.0.0.53:53 (DNS resolution service running locally, used by systemd-resolved)
+        127.0.0.1:3306 (MySQL or MariaDB database)
+        127.0.0.1:11434 (potentially a custom application service)
+        0.0.0.0:22 (SSH service, allowing remote login via port 22)
+        127.0.0.1:39119 (another custom service)
+
+    TCP6 Ports:
+        :::22 (SSH service for IPv6)
+        ::1:631 (CUPS service for IPv6)
+        :::1716 (likely another custom service)
+
+    UDP Ports:
+        127.0.0.53:53 (local DNS resolution service)
+        0.0.0.0:631 (CUPS service for printing)
+        0.0.0.0:5353 (mDNS - multicast DNS for local network discovery)
+        0.0.0.0:56150 (could be related to a local service)
+
+    UDP6 Ports:
+        :::41490 (possibly an application or service)
+        :::1716 (another custom service)
+        :::5353 (mDNS for IPv6)
+
+Established Connections
+
+These are the active connections your machine has with other hosts:
+
+    TCP Connections:
+        192.168.55.54:41188 to 172.64.41.4:443 (secure connection, probably HTTPS)
+        192.168.55.54:42092 to 34.107.243.93:443 (another HTTPS connection)
+        2401:4900:74e1:22:52148 to 2606:4700:8392:7cbc:443 (HTTPS over IPv6)
+
+    UDP Connections:
+        192.168.55.54:68 to 192.168.55.204:67 (DHCP client to server for obtaining network settings)
+
+Conclusion
+
+    You have a few local services running, such as a database server (MySQL or MariaDB), a DNS resolver, and printing services.
+    You also have secure connections (HTTPS) to external servers, and your machine is active in a local network with DHCP.
+
+-------------------------------------------------------------
+
