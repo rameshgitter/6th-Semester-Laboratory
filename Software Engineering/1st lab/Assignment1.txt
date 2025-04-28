@@ -1,0 +1,26 @@
+For each algorithm do the following
+
+1. Implement the algorithm in any language of your choice
+
+2. Generate tabular data of running time by varying the input size.
+
+3. Plot the graph of running time from the tabular data.
+
+4. Use your plot to justify theoretical time complexity.
+   -> Best-case
+   -> Average-case
+   -> Worst-case 
+
+
+
+
+1. Tower of Hanoi algorithm
+2. Dijkstra's algorithm
+3. Kruskal's algorithm
+4. Prim’s algorithm
+5. Knapsack problem algorithm
+6. Floyd-Warshall algorithm
+7. Merge sort algorithm
+8. Quick sort algorithm
+9. N-Queens algorithm
+10.Traveling Salesman Problem algorithm
