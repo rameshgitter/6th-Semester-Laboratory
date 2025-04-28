@@ -1,32 +1,48 @@
-Computer Network Laboratory README
-Overview
+# Computer Network Laboratory
 
-This repository contains all assignments and work related to the Computer Network Laboratory. The lab uses the Linux (Ubuntu or Fedora) operating system to carry out various assignments, which require superuser permissions. You are encouraged to bring your own laptop to the laboratory for easier access to assignments.
-Setup Instructions
-Using a Linux Laptop (Ubuntu/Fedora)
+## Overview
 
-    Bring your Linux laptop to the lab to complete your assignments. Make sure it is running Ubuntu or Fedora.
-    If your laptop runs Windows or macOS, you can create a virtual machine using an Ubuntu image to perform the assignments.
+This repository contains all assignments and related work for the **Computer Network Laboratory** course.  
+All lab exercises are performed on Linux systems (**Ubuntu** or **Fedora**) and often require **superuser (root) permissions**.  
+You are strongly encouraged to bring your own laptop for smoother access and convenience during the lab sessions.
 
-Virtual Machine Setup (Windows/Mac)
+---
 
-If you're using a virtual machine (VM) with Ubuntu, follow these steps:
+## Setup Instructions
 
-    Install your VM software (e.g., VirtualBox, VMware).
-    Download an Ubuntu image.
-    Set the network mode of your VM to Bridge Mode (NOT NAT mode). This will help you understand the network-related tasks better and ease the completion of your assignments.
+### Using a Linux Laptop (Ubuntu/Fedora)
 
-Superuser Permissions
+- Bring your Linux laptop (**Ubuntu** or **Fedora** preferred) to the lab.
+- Ensure your system is up-to-date and ready for development work.
+- If your laptop runs **Windows** or **macOS**, set up a **virtual machine** (VM) with Ubuntu.
 
-Many assignments will require superuser permissions to proceed. Since you will have administrative access on your laptop, you can easily execute the required commands. If you do not have a laptop, you may use the department's computers.
-Uploading Your Work
+### Virtual Machine Setup (for Windows/macOS Users)
 
-You are expected to regularly upload your code to the department server to ensure your work is backed up.
+If you are using a VM, follow these steps:
 
-    Once you have completed an assignment, upload the implemented code to the department server.
-    When an assignment is finished, submit the final version of your work in the classroom as per the instructions provided.
+1. Install virtualization software (e.g., **VirtualBox** or **VMware**).
+2. Download and install an **Ubuntu** image.
+3. Set the **Network Adapter** of your VM to **Bridge Mode** (not NAT mode).
+   > ⚡ **Bridge Mode** allows your VM to act like a separate device on the network, which is important for network-related assignments.
 
-Contact
+### Superuser (Root) Permissions
 
-For any issues or queries, please contact the laboratory coordinator or your instructor.
+- Many assignments require administrative privileges (i.e., `sudo` access).
+- With your own laptop or VM, you will have full superuser rights.
+- If you cannot bring your own device, departmental computers are available for use.
 
+---
+
+## Uploading and Submitting Your Work
+
+- **Backup Regularly**: Upload your work frequently to the department server to ensure you don't lose any progress.
+- **Final Submission**: After completing an assignment, submit the final version according to the classroom instructions.
+
+---
+
+## Contact
+
+For any issues or queries, please reach out to:
+
+- Your **Laboratory Coordinator**
+- Your **Instructor**
